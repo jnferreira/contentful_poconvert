@@ -8,10 +8,10 @@ const client = contentful.createClient({
     accessToken: 'CFPAT-_QLbCxDyhpTnTR2FFvUSqrly5QCZxfHQzzNCDQdzroE'
 })
 
-client.getSpace('orl9epj4q4ul')
-    .then((space) => space.getEntry('5eKBt4HLFQUGZyNHK4PdiG'))
-    .then((entry) => console.log(entry.sys.space.sys))
-    .catch(console.error)
+// client.getSpace('orl9epj4q4ul')
+//     .then((space) => space.getEntry('5eKBt4HLFQUGZyNHK4PdiG'))
+//     .then((entry) => console.log(entry.sys.space.sys))
+//     .catch(console.error)
 
 // .po FILE
 // PO.load('mini.po', function(err, po) {
