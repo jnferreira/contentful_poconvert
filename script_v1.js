@@ -8,6 +8,23 @@ const client = contentful.createClient({
     accessToken: 'CFPAT-_QLbCxDyhpTnTR2FFvUSqrly5QCZxfHQzzNCDQdzroE'
 })
 
+
+async function create(item2, result) {
+
+    await client.getSpace('orl9epj4q4ul').then((space) => space.getEnvironment('master'))
+        .then((environment) => environment.createEntry('3sVjz2joRTVBJwTOcKl44T', {
+            fields: {
+                msgid: { 'en-US': item2 },
+                msgstr: { 'en-US': result }
+
+            }
+        })).then((entry) => entry.publish()).catch(console.error)
+
+    return "Created";
+}
+
+
+
 // .po FILE
 PO.load('mini.po', function(err, po) {
 
@@ -22,14 +39,9 @@ PO.load('mini.po', function(err, po) {
         document = document.then(function(result) {
             console.log(result)
                 // SPACE ID & Content type ID
-            client.getSpace('orl9epj4q4ul').then((space) => space.getEnvironment('master'))
-                .then((environment) => environment.createEntry('d6HSkqUurqCzsKQqm82pg', {
-                    fields: {
-                        msgid: { 'en-US': item2 },
-                        msgstr: { 'en-US': result }
+            create(item2, result)
+                // setTimeout(create(item2, result), 3000);
 
-                    }
-                })).then((entry) => entry.publish()).catch(console.error)
         })
     }
 
