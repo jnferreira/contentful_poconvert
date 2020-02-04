@@ -5,14 +5,14 @@ var PO = require('pofile');
 
 // API KEY Contentful managment
 const client = contentful.createClient({
-    accessToken: 'CFPAT-_QLbCxDyhpTnTR2FFvUSqrly5QCZxfHQzzNCDQdzroE'
+    accessToken: 'CFPAT-Cn7TNTxIW3PmGIPUFZTFrOcLObnQfxWnsAy7qq4nT6I'
 })
 
 
 async function create(item2, result) {
 
     await client.getSpace('orl9epj4q4ul').then((space) => space.getEnvironment('master'))
-        .then((environment) => environment.createEntry('3sVjz2joRTVBJwTOcKl44T', {
+        .then((environment) => environment.createEntry('3dKApSm7tDizlFdAlD9P64', {
             fields: {
                 msgid: { 'en-US': item2 },
                 msgstr: { 'en-US': result }
@@ -20,7 +20,6 @@ async function create(item2, result) {
             }
         })).then((entry) => entry.publish()).catch(console.error)
 
-    return "Created";
 }
 
 
@@ -40,7 +39,8 @@ PO.load('mini.po', function(err, po) {
             console.log(result)
                 // SPACE ID & Content type ID
             create(item2, result)
-                // setTimeout(create(item2, result), 3000);
+                // setInterval(create(item2, result), 3000)
+                // setInterval(() => create(item2, result), 3000)
 
         })
     }

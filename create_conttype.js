@@ -4,11 +4,6 @@ const client = contentful.createClient({
     accessToken: 'CFPAT-_QLbCxDyhpTnTR2FFvUSqrly5QCZxfHQzzNCDQdzroE'
 })
 
-// client.getSpace('orl9epj4q4ul')
-//     .then((space) => space.getContentTypes())
-//     .then((response) => console.log(response.items))
-//     .catch(console.error)
-
 // //SPACE NAME
 client.getSpace('orl9epj4q4ul')
     .then((space) => space.createContentType({
