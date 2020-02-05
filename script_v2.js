@@ -4,7 +4,11 @@ const TurndownService = require('turndown');
 
 var PO = require('pofile');
 
-var turndownService = new TurndownService({ headingStyle: 'atx' })
+var turndownService = new TurndownService({ headingStyle: 'atx', keepReplacement: '' })
+
+var currentDate = new Date();
+
+console.log(currentDate)
 
 const client = contentfuldev.createClient({
     accessToken: 'IfUBVgs52y85AtYPV_lebMwFyOj5yM-FdVMZpjyaSb8',
@@ -15,7 +19,7 @@ const client = contentfuldev.createClient({
 // Content type ID
 client.getEntries({
 
-    content_type: 'minitest',
+    content_type: '3dKApSm7tDizlFdAlD9P64',
     order: 'fields.msgid',
     limit: 1000
 
@@ -26,7 +30,7 @@ client.getEntries({
     po.headers = {
         "Project-Id-Version": "PACKAGE VERSION",
         "Report-Msgid-Bugs-To": "",
-        "POT-Creation-Date": "2015-02-16 23:27+0100",
+        "POT-Creation-Date": currentDate,
         "PO-Revision-Date": "2019-12-18 14:08:50.894106",
         "Last-Translator": "",
         "Language-Team": "",
@@ -41,6 +45,7 @@ client.getEntries({
 
         let document = response.items[i].fields.msgstr
         let htmldoc = documentToHtmlString(document)
+        console.log(htmldoc)
         var markdown = turndownService.turndown(htmldoc)
 
         let item = new PO.Item()

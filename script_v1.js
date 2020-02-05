@@ -22,8 +22,6 @@ async function create(item2, result) {
 
 }
 
-
-
 // .po FILE
 PO.load('mini.po', function(err, po) {
 
@@ -38,8 +36,6 @@ PO.load('mini.po', function(err, po) {
         document = document.then(function(result) {
             console.log(result)
                 // SPACE ID & Content type ID
-                //create(item2, result)
-                // setInterval(create(item2, result), 3000)
             let time = i * 1000
             setTimeout(() => create(item2, result), time)
 
