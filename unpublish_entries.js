@@ -9,13 +9,13 @@ const client = contentfuldev.createClient({
 
 
 const clientm = contentful.createClient({
-    accessToken: 'CFPAT-_QLbCxDyhpTnTR2FFvUSqrly5QCZxfHQzzNCDQdzroE'
+    accessToken: 'CFPAT-Cn7TNTxIW3PmGIPUFZTFrOcLObnQfxWnsAy7qq4nT6I'
 })
 
 async function unpublish(id) {
 
 
-    const space = await clientm.getSpace('diyk7s6za88t')
+    await clientm.getSpace('orl9epj4q4ul')
         .then((space) => space.getEnvironment('master'))
         .then((environment) => environment.getEntry(id))
         .then((entry) => {
@@ -27,7 +27,7 @@ async function unpublish(id) {
     return "Unpublished";
 }
 
-clientm.getSpace('diyk7s6za88t')
+clientm.getSpace('orl9epj4q4ul')
     .then((space) => space.getEntries({
         limit: 1000
     }))
@@ -36,7 +36,9 @@ clientm.getSpace('diyk7s6za88t')
         for (let i = 0; i < response.items.length; i++) {
             let id = response.items[i].sys.id
             console.log(id)
-            unpublish(id)
+
+            let time = i * 1000
+            setTimeout(() => unpublish(id), time)
 
         }
 

@@ -17,7 +17,7 @@ const clientm = contentful.createClient({
 async function deleted(id) {
 
 
-    const space = await clientm.getSpace('diyk7s6za88t')
+    await clientm.getSpace('diyk7s6za88t')
         .then((space) => space.getEnvironment('master'))
         .then((environment) => environment.getEntry(id))
         .then((entry) => {
@@ -39,7 +39,9 @@ clientm.getSpace('diyk7s6za88t')
         for (let i = 0; i < response.items.length; i++) {
             let id = response.items[i].sys.id
             console.log(id)
-            deleted(id)
+
+            let time = i * 1000
+            setTimeout(() => deleted(id), time)
 
         }
 
